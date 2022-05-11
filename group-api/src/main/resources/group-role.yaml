@@ -1,0 +1,121 @@
+openapi: 3.0.0
+info:
+  version: 0.0.1
+  title: Group Role API
+  description: Group Role API reverse engineering Request to OpenAPI Spec
+  contact:
+    email: "kunal.namdeo@brain2.com"
+    
+servers: 
+  - url: http://localhost:8080/
+    description: Service Server
+      
+tags:
+  - name: GroupRoleDoc
+paths:
+  /groupRoles/groups:
+  
+    post: 
+      summary: Creating a Group
+      operationId: createGroup
+      requestBody:
+        description: Creating Group Description
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref:  "#/components/schemas/ARMAGroups"
+      responses:
+        '200':
+          description: ARMAGroup Created
+    get:
+      summary: Summary of Roles
+      tags:
+        - GroupRoleDoc
+      description: This a descritption of GroupRoleDoc
+      operationId: getAllRolesInGroup
+  
+      responses:
+        '200':
+          description: This means its ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ARMAGroups'
+
+  /groupRoles/users:  
+    get:
+      summary: Users List
+      tags:
+        - ARMA Users
+      description: This a descritption of Users
+      operationId: getAllUsers
+  
+      responses:
+        '200':
+          description: This means its ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ARMAUser'
+components:
+  schemas:
+    ARMAGroups:
+      description: This is ARMAGroups Model
+      type: object
+      properties:
+        id:
+          description: adminrole
+          type: integer
+        name:
+          description: demo.app.user
+          type: string
+        description:
+          description: general demo app user
+          type: string
+        source:
+          description: SQL
+          type: string     
+            
+    ARMAUser:
+      description: User
+      type: object
+      properties:
+        id:
+          description: '1234'
+          type: integer
+        loginName:
+          description: login Name
+          type: string
+        userNumber:
+          description: userNumber
+          type: string                   
+        fullName:
+          description: fullName
+          type: string       
+        kulanzId:
+          description: '321'
+          type: integer          
+        maximumApprovalAmount:
+          description: '22'
+          type: integer                  
+        maximumPaymentAmount:
+          description: '11'
+          type: integer  
+        verificatorLoginName:
+          description: fullName
+          type: string  
+        verificatorUserNumber:
+          description: fullName
+          type: string          
+        archiveAcceptedOn:
+          description: '2022-05-17'
+          type: string   
+        archivingEnabled:
+          description: archiveAcceptedOn
+          type: boolean    
+              
